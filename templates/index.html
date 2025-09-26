@@ -27,6 +27,29 @@
             --radius: 8px;
         }
 
+        [data-theme="dark"] {
+            --secondary: #1e293b;
+            --dark: #f8fafc;
+            --text: #e2e8f0;
+            --text-light: #94a3b8;
+            --border: #334155;
+            --bg: #0f172a;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+
+        [data-theme="dark"] body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        [data-theme="dark"] .image-container {
+            background: #1e293b;
+        }
+
+        [data-theme="dark"] .form-control {
+            background: var(--bg);
+            color: var(--text);
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
@@ -172,15 +195,18 @@
             background: var(--primary);
             color: white;
             border: none;
-            padding: 12px 24px;
+            padding: 12px 16px;
             border-radius: var(--radius);
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
+            min-height: 44px;
+            line-height: 1;
         }
 
         .btn:hover {
@@ -203,6 +229,12 @@
 
         .btn-success {
             background: var(--success);
+        }
+
+        .btn-small {
+            padding: 8px 12px;
+            font-size: 12px;
+            min-height: 36px;
         }
 
         .main-interface {
@@ -240,6 +272,8 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            min-height: 44px;
+            line-height: 1;
         }
 
         .category-btn:hover {
@@ -419,7 +453,145 @@
             100% { transform: rotate(360deg); }
         }
 
-        .shortcuts-help {
+        .theme-toggle {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .theme-toggle:hover {
+            background: var(--border);
+        }
+
+        .rotation-controls {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .rotation-btn {
+            padding: 8px;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 36px;
+            font-size: 12px;
+        }
+
+        .rotation-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .filename-template {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .filename-template h5 {
+            margin: 0 0 10px 0;
+            color: var(--dark);
+            font-size: 14px;
+        }
+
+        .template-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .template-input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 12px;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .template-preview {
+            font-size: 12px;
+            color: var(--text-light);
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .duplicate-detection {
+            background: var(--bg);
+            border: 2px solid var(--success);
+            border-radius: var(--radius);
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .duplicate-detection.disabled {
+            border-color: var(--border);
+            opacity: 0.7;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-container input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin: 0;
+        }
+
+        .checkbox-container label {
+            margin: 0;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+        }
+
+        .quick-action-btn {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 6px;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 40px;
+        }
+
+        .quick-action-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .quick-action-btn.danger:hover {
+            background: var(--danger);
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -464,6 +636,8 @@
             transform: translateX(400px);
             transition: transform 0.3s ease;
             z-index: 1000;
+            max-width: 400px;
+            word-wrap: break-word;
         }
 
         .notification.show {
@@ -476,6 +650,10 @@
 
         .notification.warning {
             background: var(--warning);
+        }
+
+        .notification.info {
+            background: var(--primary);
         }
 
         @media (max-width: 1200px) {
@@ -519,9 +697,14 @@
                 </div>
                 <div class="progress-text" id="progressText">Ready to start</div>
             </div>
-            <div class="stats" id="stats">
-                <span>📁 0 images</span>
-                <span>✅ 0 processed</span>
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <div class="stats" id="stats">
+                    <span>📁 0 images</span>
+                    <span>✅ 0 processed</span>
+                </div>
+                <div class="theme-toggle" onclick="toggleTheme()">
+                    <span id="themeIcon">🌙</span>
+                </div>
             </div>
         </div>
 
@@ -541,12 +724,38 @@
                 </div>
 
                 <div class="form-group">
+                    <div class="duplicate-detection" id="duplicateDetectionBox">
+                        <label style="margin-bottom: 10px; display: block; font-weight: 600; color: var(--dark);">🔍 Duplicate Detection</label>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="handleDuplicates" checked>
+                            <label for="handleDuplicates">
+                                Automatically detect and move duplicates before organizing
+                            </label>
+                        </div>
+                        <small style="color: var(--text-light); display: block;">
+                            💡 Finds exact duplicates, keeps originals in folder, moves duplicates to "duplicates_startup" with identifiable names
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label>🏷️ Categories</label>
+                    <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                        <button type="button" class="btn btn-secondary btn-small" onclick="loadCategoriesFromDirectory()">
+                            📁 Load from Folders
+                        </button>
+                        <button type="button" class="btn btn-secondary btn-small" onclick="useDefaultCategories()">
+                            🔄 Use Defaults
+                        </button>
+                    </div>
                     <div class="categories-input" id="categoriesContainer">
                         <!-- Categories will be added here -->
                     </div>
                     <input type="text" id="newCategory" class="form-control" 
                            placeholder="Add new category and press Enter">
+                    <small style="color: var(--text-light); margin-top: 5px; display: block;">
+                        💡 "Load from Folders" will scan your directory for existing folders and use them as categories
+                    </small>
                 </div>
 
                 <button type="submit" class="btn">
@@ -559,20 +768,32 @@
         <div class="main-interface" id="mainInterface">
             <!-- Categories Sidebar -->
             <div class="sidebar">
-                <h3>📂 Categories</h3>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <h3 style="margin: 0;">📂 Categories</h3>
+                    <button class="btn btn-secondary btn-small" onclick="loadCategoriesFromDirectoryDuringProcessing()" 
+                            title="Refresh categories from directory folders">
+                        🔄
+                    </button>
+                </div>
                 <div id="categoriesList">
                     <!-- Category buttons will be populated here -->
                 </div>
                 
+                <div class="add-category-form">
+                    <input type="text" id="newCategoryDynamic" class="template-input" 
+                           placeholder="New category..." style="flex: 1;">
+                    <button class="btn btn-small" onclick="addNewCategory()">➕</button>
+                </div>
+                
                 <div style="margin-top: 20px;">
                     <h3>⚡ Quick Actions</h3>
-                    <button class="category-btn" onclick="skipImage()">
+                    <button class="quick-action-btn" onclick="skipImage()">
                         ⏭️ Skip Image <span class="hotkey">S</span>
                     </button>
-                    <button class="category-btn" onclick="deleteImage()">
+                    <button class="quick-action-btn danger" onclick="deleteImage()">
                         🗑️ Delete <span class="hotkey">D</span>
                     </button>
-                    <button class="category-btn" onclick="previousImage()">
+                    <button class="quick-action-btn" onclick="previousImage()">
                         ⬅️ Previous <span class="hotkey">←</span>
                     </button>
                 </div>
@@ -591,9 +812,43 @@
                 </div>
                 
                 <div class="image-controls">
+                    <!-- Rotation Controls -->
+                    <div class="rotation-controls">
+                        <span style="font-size: 12px; color: var(--text-light); margin-right: 10px;">🔄 Rotate:</span>
+                        <button class="rotation-btn" onclick="rotateImage(90)">↻ 90°</button>
+                        <button class="rotation-btn" onclick="rotateImage(180)">↻ 180°</button>
+                        <button class="rotation-btn" onclick="rotateImage(270)">↻ 270°</button>
+                    </div>
+
+                    <!-- Filename Template -->
+                    <div class="filename-template">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <h5 style="margin: 0;">📝 Filename Template: [PersonName]_[Event]_[Date]_[SeqNumber].jpg</h5>
+                            <button class="btn btn-secondary btn-small" onclick="clearAllTemplateInputs()" title="Clear all fields">
+                                🗑️ Clear
+                            </button>
+                        </div>
+                        <div class="template-row">
+                            <input type="text" id="personName" class="template-input" placeholder="Person Name">
+                            <input type="text" id="event" class="template-input" placeholder="Event (auto-updates sequence)">
+                            <input type="text" id="date" class="template-input" placeholder="Date (YYYYMMDD)">
+                            <input type="text" id="seqNumber" class="template-input" placeholder="Auto" readonly 
+                                   title="Auto-increments based on event" style="background: #f8f9fa;">
+                        </div>
+                        <div class="template-preview" id="templatePreview">Preview: filename.jpg</div>
+                        <small style="color: var(--text-light); font-size: 11px;">
+                            💡 <strong>Template mode:</strong> Sequence auto-increments per event (Birthday_001, Birthday_002...)<br>
+                            📁 <strong>Fallback mode:</strong> If no fields filled, uses folder name + sequence (Person1_001.jpg)
+                        </small>
+                    </div>
+
+                    <!-- Custom Filename Alternative -->
                     <div class="control-row">
+                        <button class="btn btn-secondary btn-small" onclick="toggleCustomFilename()">
+                            ✏️ Custom Filename
+                        </button>
                         <input type="text" id="customFilename" class="filename-input" 
-                               placeholder="Custom filename (optional)">
+                               placeholder="Custom filename (optional)" style="display: none;">
                         <button class="btn btn-success" onclick="processCurrentImage()">
                             📤 Move to Selected
                         </button>
@@ -614,6 +869,27 @@
                     <h4>🎯 Quality Assessment</h4>
                     <div id="qualityDetails">
                         <!-- Quality details will be populated here -->
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h4>🔍 Duplicates</h4>
+                    <div id="duplicateInfo">
+                        <!-- Duplicate information will be populated here -->
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h4>📂 Categories</h4>
+                    <div id="categoryInfo">
+                        <!-- Category information will be populated here -->
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h4>🔢 Sequences</h4>
+                    <div id="sequenceDetails">
+                        <!-- Sequence numbers will be populated here -->
                     </div>
                 </div>
             </div>
@@ -647,6 +923,18 @@
             <span>Zoom</span>
             <span class="shortcut-key">Space</span>
         </div>
+        <div class="shortcut-item">
+            <span>Rotate</span>
+            <span class="shortcut-key">Ctrl+R</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Refresh</span>
+            <span class="shortcut-key">Shift+R</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Theme</span>
+            <span class="shortcut-key">Ctrl+T</span>
+        </div>
     </div>
 
     <!-- Notification -->
@@ -658,6 +946,8 @@
         let selectedCategories = new Set();
         let categories = ['Person1', 'Person2', 'Person3', 'Events', 'Family', 'Friends'];
         let isZoomed = false;
+        let useCustomFilename = false;
+        let isDarkMode = localStorage.getItem('darkMode') === 'true';
 
         // API base URL
         const API_BASE = 'http://localhost:5000/api';
@@ -672,8 +962,10 @@
 
         // Initialize application
         document.addEventListener('DOMContentLoaded', function() {
+            initializeTheme();
             initializeSetup();
             setupKeyboardShortcuts();
+            setupTemplatePreview();
             
             // Show shortcuts help after 3 seconds
             setTimeout(() => {
@@ -681,6 +973,27 @@
                 setTimeout(() => shortcutsHelp.classList.remove('show'), 5000);
             }, 3000);
         });
+
+        // Theme management
+        function initializeTheme() {
+            if (isDarkMode) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.getElementById('themeIcon').textContent = '☀️';
+            }
+        }
+
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            localStorage.setItem('darkMode', isDarkMode);
+            
+            if (isDarkMode) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.getElementById('themeIcon').textContent = '☀️';
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                document.getElementById('themeIcon').textContent = '🌙';
+            }
+        }
 
         // Setup form initialization
         function initializeSetup() {
@@ -704,12 +1017,22 @@
                 }
             });
 
-            // Handle form submission
+            <!-- Handle form submission -->
             setupForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 const sourceFolder = document.getElementById('sourceFolder').value.trim();
                 if (sourceFolder) {
-                    setupApplication(sourceFolder, categories);
+                    const submitBtn = e.target.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    
+                    // Show loading state
+                    submitBtn.innerHTML = '⏳ Starting...';
+                    submitBtn.disabled = true;
+                    
+                    setupApplication(sourceFolder, categories).finally(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    });
                 }
             });
 
@@ -723,7 +1046,312 @@
             }
         }
 
-        function removeCategory(categoryName) {
+        // Load categories from directory folders
+        async function loadCategoriesFromDirectory() {
+            const sourceFolder = document.getElementById('sourceFolder').value.trim();
+            
+            if (!sourceFolder) {
+                showNotification('Please enter a source folder path first', 'warning');
+                return;
+            }
+            
+            try {
+                showNotification('Scanning directory for folders...', 'info');
+                
+                // Temporarily set the source folder for the API call
+                const tempSetupResponse = await fetch(`${API_BASE}/setup`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ source_folder: sourceFolder, categories: [] })
+                });
+                
+                if (!tempSetupResponse.ok) {
+                    const error = await tempSetupResponse.json();
+                    showNotification(error.error || 'Invalid folder path', 'error');
+                    return;
+                }
+                
+                const response = await fetch(`${API_BASE}/categories/from-directory`);
+                const data = await response.json();
+                
+                if (data.categories && data.categories.length > 0) {
+                    categories = data.categories;
+                    renderCategoriesInSetup();
+                    
+                    // Show detailed feedback
+                    const folderList = data.categories.length > 5 
+                        ? data.categories.slice(0, 5).join(', ') + ` and ${data.categories.length - 5} more`
+                        : data.categories.join(', ');
+                    
+                    showNotification(`📁 Found ${data.categories.length} folders: ${folderList}`, 'success');
+                } else {
+                    showNotification('📂 No existing folders found - you can start with defaults or create new ones', 'warning');
+                    // Still update with empty array so user can add manually
+                    categories = [];
+                    renderCategoriesInSetup();
+                }
+            } catch (error) {
+                console.error('Error loading categories from directory:', error);
+                showNotification('Error scanning directory for folders', 'error');
+            }
+        }
+
+        // Load categories from directory during processing (with current setup)
+        async function loadCategoriesFromDirectoryDuringProcessing() {
+            try {
+                const response = await fetch(`${API_BASE}/categories/from-directory`);
+                const data = await response.json();
+                
+                if (data.categories && data.categories.length > 0) {
+                    // Update global categories but preserve current selections
+                    const previousSelections = Array.from(selectedCategories);
+                    categories = data.categories;
+                    renderCategoriesSidebar();
+                    
+                    // Restore selections that still exist
+                    selectedCategories.clear();
+                    previousSelections.forEach(cat => {
+                        if (categories.includes(cat)) {
+                            selectedCategories.add(cat);
+                            const btn = document.querySelector(`[data-category="${cat}"]`);
+                            if (btn) btn.classList.add('selected');
+                        }
+                    });
+                    
+                    showNotification(`📁 Refreshed: Found ${data.categories.length} folders`, 'success');
+                    updateTemplatePreview(); // Update preview with new selections
+                } else {
+                    showNotification('No folders found in directory', 'warning');
+                }
+            } catch (error) {
+                console.error('Error loading categories from directory:', error);
+                showNotification('Error scanning directory for folders', 'error');
+            }
+        }
+
+        // Use default categories
+        function useDefaultCategories() {
+            categories = ['Person1', 'Person2', 'Person3', 'Events', 'Family', 'Friends'];
+            renderCategoriesInSetup();
+            showNotification('Reset to default categories', 'info');
+        }
+
+        function renderCategoriesInSetup() {
+            const categoriesContainer = document.getElementById('categoriesContainer');
+            categoriesContainer.innerHTML = categories.map(cat => `
+                <div class="category-tag">
+                    ${cat}
+                    <span class="remove" onclick="removeCategory('${cat}')">×</span>
+                </div>
+            `).join('');
+        }
+
+        // Setup template preview and auto-sequence
+        function setupTemplatePreview() {
+            const inputs = ['personName', 'event', 'date', 'seqNumber'];
+            inputs.forEach(id => {
+                const input = document.getElementById(id);
+                if (input) {
+                    input.addEventListener('input', updateTemplatePreview);
+                }
+            });
+            
+            // Special handling for event field to auto-update sequence
+            const eventInput = document.getElementById('event');
+            if (eventInput) {
+                eventInput.addEventListener('blur', updateSequenceForEvent);
+                eventInput.addEventListener('input', debounce(updateSequenceForEvent, 500));
+            }
+        }
+
+        async function updateSequenceForEvent() {
+            const eventName = document.getElementById('event').value.trim();
+            const seqInput = document.getElementById('seqNumber');
+            
+            if (eventName && seqInput) {
+                try {
+                    // Show loading state
+                    const originalPlaceholder = seqInput.placeholder;
+                    seqInput.placeholder = 'Loading...';
+                    seqInput.style.background = '#f0f0f0';
+                    
+                    const response = await fetch(`${API_BASE}/sequence/${encodeURIComponent(eventName)}`);
+                    const data = await response.json();
+                    
+                    if (data.sequence) {
+                        seqInput.value = data.sequence.toString().padStart(3, '0'); // Zero-pad to 3 digits
+                        seqInput.style.background = '#e8f5e8'; // Light green to show it's updated
+                        updateTemplatePreview();
+                        
+                        // Reset background after a moment
+                        setTimeout(() => {
+                            seqInput.style.background = '#f8f9fa';
+                        }, 1000);
+                    }
+                    
+                    seqInput.placeholder = originalPlaceholder;
+                } catch (error) {
+                    console.error('Error getting sequence number:', error);
+                    // Fallback to 001 if error
+                    if (!seqInput.value) {
+                        seqInput.value = '001';
+                        updateTemplatePreview();
+                    }
+                    seqInput.style.background = '#f8f9fa';
+                    seqInput.placeholder = 'Auto';
+                }
+            } else if (!eventName && seqInput) {
+                // Clear sequence if no event
+                seqInput.value = '';
+                seqInput.style.background = '#f8f9fa';
+                updateTemplatePreview();
+            }
+        }
+
+        // Debounce function to avoid too many API calls while typing
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        function updateTemplatePreview() {
+            const personName = document.getElementById('personName').value.trim();
+            const event = document.getElementById('event').value.trim();
+            const date = document.getElementById('date').value.trim();
+            const seqNumber = document.getElementById('seqNumber').value.trim();
+            
+            // Check if any template fields have data
+            const hasTemplateData = personName || event || date || seqNumber;
+            
+            if (hasTemplateData) {
+                // Use template preview
+                const parts = [];
+                if (personName) parts.push(personName);
+                if (event) parts.push(event);
+                if (date) parts.push(date);
+                if (seqNumber) parts.push(seqNumber);
+                
+                const preview = parts.length > 0 ? parts.join('_') + '.jpg' : 'filename.jpg';
+                document.getElementById('templatePreview').innerHTML = `
+                    <span style="color: var(--success);">Template: ${preview}</span>
+                `;
+            } else {
+                // Show fallback preview
+                const selectedCats = Array.from(selectedCategories);
+                if (selectedCats.length > 0) {
+                    updateFallbackPreview(selectedCats[0]);
+                } else {
+                    document.getElementById('templatePreview').innerHTML = `
+                        <span style="color: var(--text-light);">Select a category to see fallback naming</span>
+                    `;
+                }
+            }
+        }
+
+        async function updateFallbackPreview(categoryName) {
+            try {
+                const response = await fetch(`${API_BASE}/sequence/category/${encodeURIComponent(categoryName)}`);
+                const data = await response.json();
+                
+                if (data.sequence) {
+                    const fallbackName = `${categoryName}_${data.sequence.toString().padStart(3, '0')}.jpg`;
+                    document.getElementById('templatePreview').innerHTML = `
+                        <span style="color: var(--warning);">📁 Fallback: ${fallbackName}</span>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error getting fallback preview:', error);
+                document.getElementById('templatePreview').innerHTML = `
+                    <span style="color: var(--warning);">📁 Fallback: ${categoryName}_001.jpg</span>
+                `;
+            }
+        }
+
+        // Rotation functionality
+        async function rotateImage(degrees) {
+            try {
+                showNotification('Rotating image...', 'info');
+                
+                const response = await fetch(`${API_BASE}/images/rotate`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ degrees: degrees })
+                });
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Reload the image to show rotation
+                    await loadCurrentImage();
+                    showNotification(`Rotated ${degrees}°`, 'success');
+                } else {
+                    showNotification(data.error || 'Failed to rotate image', 'error');
+                }
+            } catch (error) {
+                console.error('Error rotating image:', error);
+                showNotification('Error rotating image', 'error');
+            }
+        }
+
+        // Toggle custom filename
+        function toggleCustomFilename() {
+            useCustomFilename = !useCustomFilename;
+            const customInput = document.getElementById('customFilename');
+            const templateDiv = document.querySelector('.filename-template');
+            
+            if (useCustomFilename) {
+                customInput.style.display = 'block';
+                templateDiv.style.display = 'none';
+            } else {
+                customInput.style.display = 'none';
+                templateDiv.style.display = 'block';
+            }
+        }
+
+        // Add new category during processing
+        async function addNewCategory() {
+            const input = document.getElementById('newCategoryDynamic');
+            const categoryName = input.value.trim();
+            
+            if (!categoryName) {
+                showNotification('Please enter a category name', 'warning');
+                return;
+            }
+            
+            if (categories.includes(categoryName)) {
+                showNotification('Category already exists', 'warning');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE}/categories`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'add', category: categoryName })
+                });
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    categories = data.categories;
+                    renderCategoriesSidebar();
+                    input.value = '';
+                    showNotification(`Added category: ${categoryName}`, 'success');
+                } else {
+                    showNotification(data.error || 'Failed to add category', 'error');
+                }
+            } catch (error) {
+                console.error('Error adding category:', error);
+                showNotification('Error adding category', 'error');
+            }
+
             categories = categories.filter(cat => cat !== categoryName);
             const categoriesContainer = document.getElementById('categoriesContainer');
             const newCategoriesHTML = categories.map(cat => `
@@ -738,12 +1366,22 @@
         // Setup application with backend
         async function setupApplication(sourceFolder, categories) {
             try {
-                showNotification('Setting up...', 'info');
+                const handleDuplicates = document.getElementById('handleDuplicates').checked;
+                
+                if (handleDuplicates) {
+                    showNotification('🔍 Setting up and detecting duplicates...', 'info');
+                } else {
+                    showNotification('📁 Setting up...', 'info');
+                }
                 
                 const response = await fetch(`${API_BASE}/setup`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ source_folder: sourceFolder, categories: categories })
+                    body: JSON.stringify({ 
+                        source_folder: sourceFolder, 
+                        categories: categories,
+                        handle_duplicates: handleDuplicates
+                    })
                 });
 
                 const data = await response.json();
@@ -758,10 +1396,23 @@
                     // Render categories in sidebar
                     renderCategoriesSidebar();
                     
+                    // Show duplicate detection results
+                    if (data.duplicates_found > 0) {
+                        const duplicateMessage = `🎯 Found ${data.duplicates_found} duplicates out of ${data.initial_count} images. Duplicates moved to "duplicates_startup" folder. Processing ${data.total_images} unique images.`;
+                        showNotification(duplicateMessage, 'success', 8000); // Show longer
+                        
+                        // Log duplicate details
+                        console.log('Duplicate detection results:', data.duplicates_info);
+                    } else if (data.initial_count > 0) {
+                        showNotification(`✅ No duplicates found! Processing ${data.total_images} unique images.`, 'success');
+                    }
+                    
                     // Load first image
                     await loadCurrentImage();
                     
-                    showNotification(`Ready! Found ${data.total_images} images`, 'success');
+                    if (data.duplicates_found === 0) {
+                        showNotification(`🚀 Ready! Found ${data.total_images} images`, 'success');
+                    }
                 } else {
                     showNotification(data.error || 'Setup failed', 'error');
                 }
@@ -779,6 +1430,9 @@
                     📁 ${cat} <span class="hotkey">${index + 1}</span>
                 </button>
             `).join('');
+            
+            // Update category info when categories are rendered
+            updateCategoryInfo();
         }
 
         // Toggle category selection
@@ -792,6 +1446,11 @@
                 selectedCategories.add(categoryName);
                 btn.classList.add('selected');
             }
+            
+            // Update preview when category selection changes
+            updateTemplatePreview();
+            // Update category info in the info panel
+            updateCategoryInfo();
         }
 
         // Load current image
@@ -822,9 +1481,10 @@
                     // Update stats
                     await updateStats();
                     
-                    // Load image
-                    const imagePath = data.image.path.replace(/^.*[\\\/]/, ''); // Get filename only
-                    mainImage.src = `${API_BASE}/images/file/${imagePath}`;
+                    // Load image - use relative path for better handling
+                    const imagePath = data.image.relative_path || data.image.name;
+                    const imageUrl = `${API_BASE}/images/file/${imagePath}`;
+                    mainImage.src = imageUrl;
                     mainImage.onload = function() {
                         loadingSpinner.style.display = 'none';
                         mainImage.style.display = 'block';
@@ -839,6 +1499,9 @@
                     selectedCategories.clear();
                     document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('selected'));
                     document.getElementById('customFilename').value = '';
+                    
+                    // Update preview with cleared state
+                    updateTemplatePreview();
                 }
             } catch (error) {
                 console.error('Error loading image:', error);
@@ -936,8 +1599,139 @@
                     <span>📁 ${data.total_images} images</span>
                     <span>✅ ${data.total_processed} processed</span>
                 `;
+
+                // Update all info panels
+                await updateSequenceDetails();
+                await updateDuplicateInfo();
+                updateCategoryInfo();
             } catch (error) {
                 console.error('Error updating stats:', error);
+            }
+        }
+
+        // Update duplicate information
+        async function updateDuplicateInfo() {
+            try {
+                const response = await fetch(`${API_BASE}/duplicates/startup-info`);
+                const data = await response.json();
+                const duplicateInfo = document.getElementById('duplicateInfo');
+                
+                if (data.folder_exists && data.count > 0) {
+                    duplicateInfo.innerHTML = `
+                        <div class="info-item">
+                            <span class="info-label">Found:</span>
+                            <span class="info-value">${data.count}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Status:</span>
+                            <span class="info-value">Moved to folder</span>
+                        </div>
+                        <div class="info-item" style="margin-top: 8px;">
+                            <span class="info-label">Location:</span>
+                            <span class="info-value" style="word-break: break-word; font-size: 11px;">duplicates_startup/</span>
+                        </div>
+                    `;
+                } else {
+                    duplicateInfo.innerHTML = `
+                        <div class="info-item">
+                            <span class="info-label">Status:</span>
+                            <span class="info-value">✅ None found</span>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error updating duplicate info:', error);
+                const duplicateInfo = document.getElementById('duplicateInfo');
+                if (duplicateInfo) {
+                    duplicateInfo.innerHTML = '<div class="info-item">Error loading duplicate info</div>';
+                }
+            }
+        }
+
+        // Update category information
+        function updateCategoryInfo() {
+            const categoryInfo = document.getElementById('categoryInfo');
+            
+            if (categories && categories.length > 0) {
+                const selectedCount = selectedCategories.size;
+                const totalCount = categories.length;
+                
+                let content = `
+                    <div class="info-item">
+                        <span class="info-label">Total:</span>
+                        <span class="info-value">${totalCount}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Selected:</span>
+                        <span class="info-value">${selectedCount}</span>
+                    </div>
+                `;
+                
+                if (selectedCount > 0) {
+                    const selectedList = Array.from(selectedCategories).join(', ');
+                    content += `
+                        <div class="info-item" style="margin-top: 8px;">
+                            <span class="info-label">Current:</span>
+                            <span class="info-value" style="word-break: break-word;">${selectedList}</span>
+                        </div>
+                    `;
+                }
+                
+                categoryInfo.innerHTML = content;
+            } else {
+                categoryInfo.innerHTML = '<div class="info-item">No categories loaded</div>';
+            }
+        }
+
+        // Update sequence details
+        async function updateSequenceDetails() {
+            try {
+                const response = await fetch(`${API_BASE}/sequences`);
+                const data = await response.json();
+                const sequenceDetails = document.getElementById('sequenceDetails');
+                
+                let content = '';
+                
+                // Event sequences
+                if (data.event_sequences && Object.keys(data.event_sequences).length > 0) {
+                    content += '<div style="margin-bottom: 10px;"><strong>📅 Events:</strong></div>';
+                    const eventItems = Object.entries(data.event_sequences)
+                        .sort(([a], [b]) => a.localeCompare(b))
+                        .map(([event, count]) => `
+                            <div class="info-item">
+                                <span class="info-label">${event}:</span>
+                                <span class="info-value">Next: ${count + 1}</span>
+                            </div>
+                        `).join('');
+                    content += eventItems;
+                }
+                
+                // Category sequences (fallback naming)
+                if (data.category_sequences && Object.keys(data.category_sequences).length > 0) {
+                    if (content) content += '<div style="margin: 10px 0; border-top: 1px solid var(--border); padding-top: 10px;"></div>';
+                    content += '<div style="margin-bottom: 10px;"><strong>📁 Categories:</strong></div>';
+                    const categoryItems = Object.entries(data.category_sequences)
+                        .sort(([a], [b]) => a.localeCompare(b))
+                        .map(([category, count]) => `
+                            <div class="info-item">
+                                <span class="info-label">${category}:</span>
+                                <span class="info-value">Next: ${count + 1}</span>
+                            </div>
+                        `).join('');
+                    content += categoryItems;
+                }
+                
+                if (content) {
+                    sequenceDetails.innerHTML = content;
+                } else {
+                    sequenceDetails.innerHTML = '<div class="info-item">No sequences yet</div>';
+                }
+            } catch (error) {
+                console.error('Error updating sequence details:', error);
+                const sequenceDetails = document.getElementById('sequenceDetails');
+                if (sequenceDetails) {
+                    sequenceDetails.innerHTML = '<div class="info-item">Error loading sequences</div>';
+                }
             }
         }
 
@@ -949,22 +1743,42 @@
             }
 
             try {
-                const customName = document.getElementById('customFilename').value.trim();
+                let requestData = {
+                    action: 'move',
+                    categories: Array.from(selectedCategories)
+                };
+
+                if (useCustomFilename) {
+                    const customName = document.getElementById('customFilename').value.trim();
+                    requestData.custom_name = customName;
+                } else {
+                    // Use filename template
+                    const template = {
+                        person_name: document.getElementById('personName').value.trim(),
+                        event: document.getElementById('event').value.trim(),
+                        date: document.getElementById('date').value.trim(),
+                        seq_number: document.getElementById('seqNumber').value.trim()
+                    };
+                    requestData.filename_template = template;
+                }
                 
                 const response = await fetch(`${API_BASE}/images/process`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        action: 'move',
-                        categories: Array.from(selectedCategories),
-                        custom_name: customName
-                    })
+                    body: JSON.stringify(requestData)
                 });
 
                 const data = await response.json();
                 
                 if (data.success) {
                     showNotification(`Moved to ${Array.from(selectedCategories).join(', ')}`, 'success');
+                    
+                    // Clear template inputs for next image (but keep event/sequence)
+                    clearTemplateInputs();
+                    
+                    // Update sequence numbers display
+                    await updateSequenceDetails();
+                    
                     await loadCurrentImage();
                 } else {
                     showNotification(data.error || 'Failed to process image', 'error');
@@ -973,6 +1787,28 @@
                 console.error('Error processing image:', error);
                 showNotification('Error processing image', 'error');
             }
+        }
+
+        function clearTemplateInputs() {
+            // Clear most fields but keep event and sequence for continuity
+            document.getElementById('personName').value = '';
+            // Keep event field - user might be processing multiple images from same event
+            // document.getElementById('event').value = '';
+            document.getElementById('date').value = '';
+            // Keep sequence - it will auto-update based on event
+            // document.getElementById('seqNumber').value = '';
+            document.getElementById('customFilename').value = '';
+            updateTemplatePreview();
+        }
+
+        // Function to completely clear all template inputs (for new session or manual clear)
+        function clearAllTemplateInputs() {
+            document.getElementById('personName').value = '';
+            document.getElementById('event').value = '';
+            document.getElementById('date').value = '';
+            document.getElementById('seqNumber').value = '';
+            document.getElementById('customFilename').value = '';
+            updateTemplatePreview();
         }
 
         // Skip current image
@@ -1035,7 +1871,14 @@
         function setupKeyboardShortcuts() {
             document.addEventListener('keydown', function(e) {
                 // Skip if typing in input fields
-                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+                    // Allow Enter in the dynamic category input
+                    if (e.target.id === 'newCategoryDynamic' && e.key === 'Enter') {
+                        e.preventDefault();
+                        addNewCategory();
+                    }
+                    return;
+                }
 
                 const key = e.key.toLowerCase();
                 
@@ -1059,6 +1902,21 @@
                     case ' ':
                         e.preventDefault();
                         toggleZoom();
+                        break;
+                    case 'r':
+                        if (e.ctrlKey || e.metaKey) {
+                            e.preventDefault();
+                            rotateImage(90);
+                        } else if (e.shiftKey) {
+                            e.preventDefault();
+                            loadCategoriesFromDirectoryDuringProcessing();
+                        }
+                        break;
+                    case 't':
+                        if (e.ctrlKey || e.metaKey) {
+                            e.preventDefault();
+                            toggleTheme();
+                        }
                         break;
                     default:
                         // Check for number keys (1-9)
@@ -1099,7 +1957,7 @@
             return new Date(isoString).toLocaleDateString();
         }
 
-        function showNotification(message, type = 'info') {
+        function showNotification(message, type = 'info', duration = 3000) {
             const notification = document.getElementById('notification');
             notification.textContent = message;
             notification.className = `notification ${type}`;
@@ -1107,7 +1965,7 @@
             
             setTimeout(() => {
                 notification.classList.remove('show');
-            }, 3000);
+            }, duration);
         }
     </script>
 </body>
