@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagify</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/themes.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <!-- Logo Section -->
+            <div class="header-logo-section">
+                <div class="logo">
+                    Imagify
+                </div>
+            </div>
+            
+            <!-- Progress Section (Centered) -->
+            <div class="header-progress-section">
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text" id="progressText">Ready to start</div>
+                </div>
+            </div>
+            
+            <!-- Stats and Controls Section -->
+            <div class="header-stats-section">
+                <div class="stats-vertical" id="stats">
+                    <div class="stat-item">📁 0 images</div>
+                    <div class="stat-item">✅ 0 processed</div>
+                </div>
+                <div class="theme-toggle-modern" onclick="toggleTheme()">
+                    <div class="theme-toggle-inner">
+                        <span id="themeIcon">🌙</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Setup Screen -->
+        <div class="setup-screen" id="setupScreen">
+            <h2>🚀 Get Started</h2>
+            <p>Choose your source folder and setup categories to begin organizing your images</p>
+            
+            <form id="setupForm">
+                <div class="form-group">
+                    <label for="sourceFolder">📁 Source Folder Path</label>
+                    <input type="text" id="sourceFolder" class="form-control" 
+                           placeholder="/path/to/your/images" required>
+                    <small style="color: var(--text-light); margin-top: 5px; display: block;">
+                        Enter the full path to your images folder
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <div class="duplicate-detection" id="duplicateDetectionBox">
+                        <div class="duplicate-toggle">
+                            <input type="checkbox" id="handleDuplicates" checked>
+                            <label for="handleDuplicates">Detect duplicates</label>
+                        </div>
+                        <div style="position: relative;">
+                            <button type="button" class="info-btn" onmouseenter="showTooltip(this)" onmouseleave="hideTooltip(this)">i</button>
+                            <div class="info-tooltip">
+                                Finds exact duplicates, keeps originals in folder, moves duplicates to "duplicates_startup" with identifiable names
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>🏷️ Categories</label>
+                    <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                        <button type="button" class="btn btn-secondary btn-small" onclick="loadCategoriesFromDirectory()">
+                            📁 Load from Folders
+                        </button>
+                        <button type="button" class="btn btn-secondary btn-small" onclick="useDefaultCategories()">
+                            📄 Use Defaults
+                        </button>
+                    </div>
+                    <div class="categories-input" id="categoriesContainer">
+                        <!-- Categories will be added here -->
+                    </div>
+                    <input type="text" id="newCategory" class="form-control" 
+                           placeholder="Add new category and press Enter">
+                    <small style="color: var(--text-light); margin-top: 5px; display: block;">
+                        💡 "Load from Folders" will scan your directory for existing folders and use them as categories
+                    </small>
+                </div>
+
+                <button type="submit" class="btn">
+                    🎯 Start Organizing
+                </button>
+            </form>
+        </div>
+
+        <!-- Main Interface -->
+        <div class="main-interface" id="mainInterface">
+            <!-- Categories Sidebar -->
+            <div class="sidebar">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <h3 style="margin: 0;">📂 Categories</h3>
+                    <button class="btn btn-secondary btn-small" onclick="loadCategoriesFromDirectoryDuringProcessing()" 
+                            title="Refresh categories from directory folders">
+                        🔄
+                    </button>
+                </div>
+                <div id="categoriesList">
+                    <!-- Category buttons will be populated here -->
+                </div>
+                
+                <div class="add-category-form">
+                    <input type="text" id="newCategoryDynamic" class="template-input" 
+                           placeholder="New category..." style="flex: 1;">
+                    <button class="btn btn-small" onclick="addNewCategory()">+</button>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <h3>⚡ Quick Actions</h3>
+                    <button class="quick-action-btn" onclick="skipImage()">
+                        ⏭️ Skip Image <span class="hotkey">S</span>
+                    </button>
+                    <button class="quick-action-btn danger" onclick="deleteImage()">
+                        🗑️ Delete <span class="hotkey">D</span>
+                    </button>
+                    <button class="quick-action-btn" onclick="previousImage()">
+                        ⬅️ Previous <span class="hotkey">←</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Image Viewer -->
+            <div class="image-viewer">
+                <div class="image-container" id="imageContainer">
+                    <div class="loading" id="loadingSpinner">
+                        <div class="spinner"></div>
+                        Loading image...
+                    </div>
+                    <img id="mainImage" class="main-image" style="display: none;">
+                    <div class="image-overlay" id="imageOverlay"></div>
+                    <div class="quality-indicators" id="qualityIndicators"></div>
+                </div>
+                
+                <div class="image-controls">
+                    <!-- Rotation Controls -->
+                    <div class="rotation-controls">
+                        <span style="font-size: 12px; color: var(--text-light); margin-right: 10px;">🔄 Rotate:</span>
+                        <button class="rotation-btn" onclick="rotateImage(90)">↻ 90°</button>
+                        <button class="rotation-btn" onclick="rotateImage(180)">↻ 180°</button>
+                        <button class="rotation-btn" onclick="rotateImage(270)">↻ 270°</button>
+                    </div>
+
+                    <!-- Filename Template -->
+                    <div class="filename-template">
+                        <h5>
+                            📝 Template: [Person]_[Event]_[Date]_[Seq].jpg
+                            <button class="btn btn-secondary btn-clear" onclick="clearAllTemplateInputs()" title="Clear all fields">
+                                Clear
+                            </button>
+                        </h5>
+                        <div class="template-row">
+                            <input type="text" id="personName" class="template-input" placeholder="Person">
+                            <input type="text" id="event" class="template-input" placeholder="Event">
+                            <input type="text" id="date" class="template-input" placeholder="YYYYMMDD">
+                            <input type="text" id="seqNumber" class="template-input" placeholder="Auto" readonly 
+                                   title="Auto-increments based on event">
+                        </div>
+                        <div class="template-preview" id="templatePreview">Preview: filename.jpg</div>
+                        <div class="template-info">
+                            <strong>Template:</strong> Sequence per event (Birthday_001, Birthday_002)<br>
+                            <strong>Fallback:</strong> If empty, uses category + sequence (Person1_001.jpg)
+                        </div>
+                    </div>
+
+                    <!-- Custom Filename Alternative -->
+                    <div class="control-row">
+                        <button class="btn btn-secondary" onclick="toggleCustomFilename()">
+                            ✏️ Custom Filename
+                        </button>
+                        <input type="text" id="customFilename" class="filename-input" 
+                               placeholder="Custom filename (optional)" style="display: none;">
+                        <button class="btn btn-success" onclick="processCurrentImage()">
+                            📤 Move to Selected
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Panel -->
+            <div class="info-panel" id="infoPanel">
+                <div class="info-section">
+                    <h4>📊 Image Details</h4>
+                    <div id="imageDetails">
+                        <!-- Image details will be populated here -->
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h4>🎯 Quality Assessment</h4>
+                    <div id="qualityDetails">
+                        <!-- Quality details will be populated here -->
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h4>🔍 Duplicates</h4>
+                    <div id="duplicateInfo">
+                        <!-- Duplicate information will be populated here -->
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h4>📂 Categories</h4>
+                    <div id="categoryInfo">
+                        <!-- Category information will be populated here -->
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h4>🔢 Sequences</h4>
+                    <div id="sequenceDetails">
+                        <!-- Sequence numbers will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shortcuts Help -->
+    <div class="shortcuts-help" id="shortcutsHelp">
+        <div style="font-weight: bold; margin-bottom: 10px;">⌨️ Keyboard Shortcuts</div>
+        <div class="shortcut-item">
+            <span>Numbers 1-9</span>
+            <span class="shortcut-key">Category</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Delete</span>
+            <span class="shortcut-key">D</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Skip</span>
+            <span class="shortcut-key">S</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Previous</span>
+            <span class="shortcut-key">←</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Process</span>
+            <span class="shortcut-key">Enter</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Zoom</span>
+            <span class="shortcut-key">Space</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Rotate</span>
+            <span class="shortcut-key">Ctrl+R</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Refresh</span>
+            <span class="shortcut-key">Shift+R</span>
+        </div>
+        <div class="shortcut-item">
+            <span>Theme</span>
+            <span class="shortcut-key">Ctrl+T</span>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <!-- JavaScript Files -->
+    <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/ui.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/keyboard.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

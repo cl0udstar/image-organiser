@@ -1,0 +1,342 @@
+/* Modern Glassmorphism Theme System - Coral/Orange Theme */
+
+/* Dark Theme */
+[data-theme="dark"] {
+    --secondary: #16213e;
+    --dark: #f8fafc;
+    --text: #e2e8f0;
+    --text-light: #94a3b8;
+    --border: #2d3748;
+    --bg: #1a1a2e;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    --shadow-elevated: 0 8px 32px rgba(0, 0, 0, 0.6);
+    --glass-bg: rgba(26, 26, 46, 0.8);
+    --glass-border: rgba(255, 107, 53, 0.1);
+    --accent-coral: #FF6B35;
+    --accent-orange: #FF8A65;
+    --primary: #FF6B35;
+    --primary-dark: #E55A2B;
+}
+
+[data-theme="dark"] body {
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+}
+
+[data-theme="dark"] .header {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+}
+
+[data-theme="dark"] .header::before {
+    background: linear-gradient(90deg, transparent, rgba(255,107,53,0.2), transparent);
+}
+
+[data-theme="dark"] .logo {
+    background: linear-gradient(135deg, var(--accent-coral), var(--accent-orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+[data-theme="dark"] .setup-screen {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+}
+
+[data-theme="dark"] .setup-screen::before {
+    background: linear-gradient(90deg, transparent, rgba(255,107,53,0.1), transparent);
+}
+
+[data-theme="dark"] .sidebar {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+}
+
+[data-theme="dark"] .sidebar::before {
+    background: linear-gradient(90deg, transparent, rgba(255,107,53,0.1), transparent);
+}
+
+[data-theme="dark"] .image-viewer {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+}
+
+[data-theme="dark"] .image-viewer::before {
+    background: linear-gradient(90deg, transparent, rgba(255,107,53,0.1), transparent);
+}
+
+[data-theme="dark"] .image-container {
+    background: rgba(22, 33, 62, 0.3);
+}
+
+[data-theme="dark"] .info-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+}
+
+[data-theme="dark"] .info-panel::before {
+    background: linear-gradient(90deg, transparent, rgba(255,107,53,0.1), transparent);
+}
+
+/* Dark Theme Controls */
+[data-theme="dark"] .image-controls {
+    background: rgba(26, 26, 46, 0.1);
+    border-top: 1px solid rgba(255, 107, 53, 0.1);
+    backdrop-filter: blur(20px);
+}
+
+[data-theme="dark"] .progress-bar {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .progress-fill {
+    background: linear-gradient(90deg, var(--accent-coral), var(--accent-orange));
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.6);
+}
+
+[data-theme="dark"] .theme-toggle-modern {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+}
+
+[data-theme="dark"] .theme-toggle-modern::before {
+    background: linear-gradient(135deg, rgba(255,107,53,0.2), rgba(255,107,53,0.05));
+}
+
+[data-theme="dark"] .theme-toggle-modern:hover {
+    box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
+}
+
+/* Dark theme form controls */
+[data-theme="dark"] .form-control {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] .form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+[data-theme="dark"] .template-input {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] .template-input[readonly] {
+    background: rgba(30, 41, 59, 0.5);
+    color: var(--text-light);
+}
+
+[data-theme="dark"] .filename-input {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text);
+    backdrop-filter: blur(10px);
+}
+
+/* Dark theme notifications */
+[data-theme="dark"] .notification {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    color: var(--text);
+}
+
+[data-theme="dark"] .notification.error {
+    background: rgba(239, 68, 68, 0.9);
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+[data-theme="dark"] .notification.warning {
+    background: rgba(245, 158, 11, 0.9);
+    border-color: rgba(245, 158, 11, 0.3);
+}
+
+[data-theme="dark"] .notification.info {
+    background: rgba(99, 102, 241, 0.9);
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+[data-theme="dark"] .notification.success {
+    background: rgba(16, 185, 129, 0.9);
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* Dark theme shortcuts help */
+[data-theme="dark"] .shortcuts-help {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    color: var(--text);
+}
+
+[data-theme="dark"] .shortcut-key {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text);
+}
+
+/* Dark theme category tags */
+[data-theme="dark"] .category-tag {
+    background: var(--glass-bg);
+    color: var(--text);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] .category-tag .remove {
+    color: var(--danger);
+}
+
+/* Dark theme duplicate detection */
+[data-theme="dark"] .duplicate-detection {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] .duplicate-detection.enabled {
+    border-color: var(--success);
+    background: linear-gradient(135deg, var(--glass-bg) 0%, rgba(16, 185, 129, 0.1) 100%);
+}
+
+/* Dark theme filename template */
+[data-theme="dark"] .filename-template {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] .filename-template h5 {
+    color: var(--text);
+}
+
+/* Dark theme scrollbars */
+[data-theme="dark"] ::-webkit-scrollbar {
+    width: 8px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+    background: rgba(30, 41, 59, 0.3);
+    border-radius: 4px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Accessibility improvements for dark theme */
+[data-theme="dark"] .btn:focus,
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .category-btn:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Better contrast for disabled elements in dark theme */
+[data-theme="dark"] :disabled,
+[data-theme="dark"] .disabled {
+    opacity: 0.5;
+    color: var(--text-light);
+}
+
+/* Enhanced glassmorphism effects for both themes */
+.glass-effect {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-elevated);
+}
+
+/* Smooth theme transitions */
+* {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+/* Enhanced 3D effects for modern UI elements */
+.elevated-surface {
+    position: relative;
+    overflow: hidden;
+}
+
+.elevated-surface::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    z-index: 1;
+}
+
+[data-theme="dark"] .elevated-surface::before {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+}
+
+/* Modern button hover effects for both themes */
+.modern-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modern-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .modern-hover:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.modern-hover:active {
+    transform: translateY(0);
+    transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced depth for layered interfaces */
+.depth-1 {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.depth-2 {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.depth-3 {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16);
+}
+
+[data-theme="dark"] .depth-1 {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .depth-2 {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .depth-3 {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}

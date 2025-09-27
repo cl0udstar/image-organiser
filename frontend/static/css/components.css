@@ -1,0 +1,425 @@
+/* Component-specific styles for Image Organizer */
+
+/* Form Components */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    background: var(--bg);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* Categories */
+.categories-input {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.category-tag {
+    background: var(--secondary);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.category-tag .remove {
+    cursor: pointer;
+    color: var(--danger);
+    font-weight: bold;
+}
+
+.category-btn {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 8px;
+    background: var(--secondary);
+    border: 2px solid transparent;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    line-height: 1;
+}
+
+.category-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.category-btn.selected {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary-dark);
+}
+
+/* Buttons */
+.btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    line-height: 1;
+    box-shadow: 0 2px 4px rgba(99, 102, 241, 0.2);
+}
+
+.btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(99, 102, 241, 0.2);
+}
+
+.btn-secondary {
+    background: var(--secondary);
+    color: var(--text);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.btn-secondary:hover {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 4px 8px rgba(99, 102, 241, 0.2);
+}
+
+.btn-danger {
+    background: var(--danger);
+    box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+}
+
+.btn-danger:hover {
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.btn-success {
+    background: var(--success);
+    box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+}
+
+.btn-success:hover {
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-small {
+    padding: 8px 12px;
+    font-size: 12px;
+    min-height: 36px;
+}
+
+/* Hotkeys */
+.hotkey {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: auto;
+}
+
+/* Rotation Controls */
+.rotation-controls {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.rotation-btn {
+    padding: 8px;
+    background: var(--secondary);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    font-size: 12px;
+}
+
+.rotation-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* Filename Template */
+.filename-template {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.filename-template h5 {
+    margin: 0 0 10px 0;
+    color: var(--dark);
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.template-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 80px;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.template-input {
+    padding: 8px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 12px;
+    background: var(--bg);
+    color: var(--text);
+    min-width: 0; /* Prevents overflow */
+}
+
+.template-input[readonly] {
+    background: #f8f9fa;
+    color: var(--text-light);
+}
+
+.template-preview {
+    font-size: 12px;
+    color: var(--text-light);
+    font-style: italic;
+    margin: 8px 0;
+    min-height: 16px;
+}
+
+.template-info {
+    font-size: 10px;
+    color: var(--text-light);
+    line-height: 1.3;
+    margin-top: 5px;
+}
+
+.template-info strong {
+    font-weight: 600;
+}
+
+.btn-clear {
+    padding: 4px 8px;
+    font-size: 11px;
+    min-height: 28px;
+    background: var(--secondary);
+    color: var(--text-light);
+    border: 1px solid var(--border);
+}
+
+.btn-clear:hover {
+    background: var(--danger);
+    color: white;
+}
+
+/* Add Category Form */
+.add-category-form {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border);
+}
+
+.add-category-form .btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    line-height: 1;
+    box-shadow: 0 2px 4px rgba(99, 102, 241, 0.2);
+}
+
+.add-category-form .btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(99, 102, 241, 0.3);
+}
+
+/* Quick Actions */
+.quick-action-btn {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 6px;
+    background: var(--secondary);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 40px;
+}
+
+.quick-action-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.quick-action-btn.danger:hover {
+    background: var(--danger);
+}
+
+/* Duplicate Detection */
+.duplicate-detection {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.duplicate-detection:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+.duplicate-detection.enabled {
+    border-color: var(--success);
+    background: linear-gradient(135deg, var(--bg) 0%, rgba(16, 185, 129, 0.02) 100%);
+}
+
+.duplicate-detection.disabled {
+    border-color: var(--border);
+    opacity: 0.6;
+}
+
+.duplicate-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+}
+
+.duplicate-toggle input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+}
+
+.duplicate-toggle label {
+    margin: 0;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Info Button and Tooltip */
+.info-btn {
+    background: var(--secondary);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+}
+
+.info-btn:hover {
+    background: var(--primary);
+    color: white;
+    transform: scale(1.1);
+}
+
+.info-tooltip {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    background: var(--dark);
+    color: white;
+    padding: 8px 12px;
+    border-radius: var(--radius);
+    font-size: 12px;
+    max-width: 250px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.info-tooltip.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.info-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    right: 12px;
+    border: 6px solid transparent;
+    border-top-color: var(--dark);
+}
