@@ -199,7 +199,7 @@ Example: `Family_001.jpg`
 ## API Reference
 
 ### Setup
-- `POST /api/setup` - Initialize application with source folder and categories
+- `POST /api/setup` - Initialise application with source folder and categories
 
 ### Image Operations
 - `GET /api/images/current` - Get current image information
@@ -285,4 +285,4 @@ Having issues? Check the troubleshooting section in the setup guide or open an i
 
 ---
 
-**Made with ❤️ by cl0udstar for better photo organization**
+**Made with ❤️ by cl0udstar for better photo organisation**
